@@ -7,7 +7,7 @@
 #       _____
 #        k = 1
 from logic import add, subtract, divide, multiply
-
+sqrt = binart_search(lambda x: x**2 - multiply(k, subtract(n, k))
 def binary_search(f, a, b, tol=1e-7):
     if multiply(f(a), f(b)) >= 0:
         raise ValueError("Function must have different signs at the endpoints.")
