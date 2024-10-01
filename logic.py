@@ -46,23 +46,3 @@ def divide(bin_a, bin_b):
         quotient = add(bin(quotient)[2:], bin(multiple)[2:])
     
     return bin(quotient)[2:]
-
-def floor_divide(bin_a, bin_b):
-    if bin_b == '0':
-        raise ValueError("Cannot divide by zero")
-    
-    a = int(bin_a, 2)
-    b = int(bin_b, 2)
-    quotient = 0
-    remainder = a
-
-    while remainder >= b:
-        temp = b
-        multiple = 1
-        while remainder >= (temp << 1):
-            temp <<= 1
-            multiple <<= 1
-        remainder = subtract(bin(remainder)[2:], bin(temp)[2:])
-        quotient = add(bin(quotient)[2:], bin(multiple)[2:])
-    
-    return bin(quotient)[2:]
