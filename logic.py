@@ -1,8 +1,12 @@
+def add(a,b):
+    a = int(bin_a, 2)
+    b = int(bin_b, 2)
     while b != 0:
         carry = a & b
         a = a ^ b
         b = carry << 1
     return bin(a)[2:]
+    
 def binary_subtraction(bin_a, bin_b):
     a = int(bin_a, 2)
     b = int(bin_b, 2)
@@ -11,14 +15,17 @@ def binary_subtraction(bin_a, bin_b):
         a = a ^ b
         b = borrow << 1
     return bin(a)[2:]
+    
 def add(a, b):
     while b != 0:
         carry = a & b
         a = a ^ b
         b = carry << 1
     return a
+    
 def subtract(a, b):
     return add(a, add(~b, 1))
+    
 def multiply(a, b):
     result = 0
     negative = (a < 0) ^ (b < 0)
@@ -29,6 +36,7 @@ def multiply(a, b):
         a <<= 1
         b >>= 1
     return -result if negative else result
+    
 def divide(a, b):
     if b == 0:
         raise ValueError("Cannot divide by zero")
@@ -41,6 +49,3 @@ def divide(a, b):
         while a >= (temp << 1):
             temp <<= 1
             multiple <<= 1
-        a = subtract(a, temp)
-        quotient = add(quotient, multiple)
-    return -quotient if negative else quotient
