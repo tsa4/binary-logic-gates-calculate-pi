@@ -7,7 +7,7 @@ def add(bin_a, bin_b):
         b = carry << 1
     return bin(a)[2:]
 
-def binary_subtraction(bin_a, bin_b):
+def subtract(bin_a, bin_b):
     a = int(bin_a, 2)
     b = int(bin_b, 2)
     while b != 0:
@@ -15,9 +15,6 @@ def binary_subtraction(bin_a, bin_b):
         a = a ^ b
         b = borrow << 1
     return bin(a)[2:]
-
-def subtract(bin_a, bin_b):
-    return binary_subtraction(bin_a, bin_b)
 
 def multiply(bin_a, bin_b):
     a = int(bin_a, 2)
