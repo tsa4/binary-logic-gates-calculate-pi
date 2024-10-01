@@ -16,13 +16,6 @@ def binary_subtraction(bin_a, bin_b):
         b = borrow << 1
     return bin(a)[2:]
     
-def add(a, b):
-    while b != 0:
-        carry = a & b
-        a = a ^ b
-        b = carry << 1
-    return a
-    
 def subtract(a, b):
     return add(a, add(~b, 1))
     
