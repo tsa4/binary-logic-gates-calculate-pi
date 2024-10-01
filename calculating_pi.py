@@ -6,32 +6,31 @@
 #  n     /        \|k ( n - k )
 #       _____
 #        k = 1
-def bisection_method(func, a, b, tol=1e-7, max_iter=100):
-    if func(a) * func(b) >= 0:
-        raise ValueError("The function must have different signs at a and b.")
+from logic import add, subtract, divide, multiply
 
-    for _ in range(max_iter):
-        c = a + (b - a) // 2
-
-        if abs(func(c)) < tol or (b - a) < tol:
-            return c
-
-        if func(c) * func(a) < 0:
-            b = c
+def binary_search(f, a, b, tol=1e-7):
+    if multiply(f(a), f(b)) >= 0:
+        raise ValueError("Function must have different signs at the endpoints.")
+    while abs(subtract(b, a)) > tol:
+        mid = divide(add(a, b), 2)
+        if multiply(f(mid), f(a)) < 0:
+            b = mid
         else:
-            a = c
-
-    return a if abs(func(a)) < tol else b
+            a = mid
+    return divide(add(a, b), 2)
 
 def summation(start, end, function):
     return sum(function(index) for index in range(start, end + 1))
-def ans(k):
 
-def binary_search(f, a, b, tol=1e-7):
-   if f(a) * f(b) >= 0: raise ValueError()
-   while abs(b - a) > tol:
-       mid = (a + b) / 2
-       a, b = (mid, b) if f(mid) * f(a) < 0 else (a, mid)
-   return (a + b) / 2
-   
-summation(1, n, 
+def func_sum(n):
+    return summation(1, n, lambda k: sqrt(multiply(k, subtract(n, k))))
+
+def ans(n):
+    def riemann(k):
+        return multiply(8, divide(func_sum(n), n))
+    return binary_search(lambda x: subtract(riemann(x), x), 0, n)
+
+# Example usage:
+n = 10  # Replace with your desired value of n
+result = ans(n)
+print("Approximate square root:", result)
